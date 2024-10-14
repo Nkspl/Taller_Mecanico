@@ -44,9 +44,9 @@ Partial Class Form1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(35), CByte(35), CByte(35))
         Panel1.Controls.Add(Panel2)
-        Panel1.Location = New Point(1, -2)
+        Panel1.Location = New Point(-1, -2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1129, 774)
+        Panel1.Size = New Size(1365, 780)
         Panel1.TabIndex = 0
         ' 
         ' Panel2
@@ -62,7 +62,7 @@ Partial Class Form1
         Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(Label1)
-        Panel2.Location = New Point(169, 14)
+        Panel2.Location = New Point(305, 14)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(822, 594)
         Panel2.TabIndex = 0
@@ -180,7 +180,7 @@ Partial Class Form1
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1128, 766)
+        ClientSize = New Size(1362, 773)
         Controls.Add(Panel1)
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen

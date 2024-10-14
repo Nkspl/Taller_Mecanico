@@ -161,9 +161,9 @@ Partial Class Form1
         Label2.ForeColor = SystemColors.AppWorkspace
         Label2.Location = New Point(477, 196)
         Label2.Name = "Label2"
-        Label2.Size = New Size(148, 20)
+        Label2.Size = New Size(60, 20)
         Label2.TabIndex = 11
-        Label2.Text = "Nombre de usuario:"
+        Label2.Text = "Correo:"
         ' 
         ' Label1
         ' 

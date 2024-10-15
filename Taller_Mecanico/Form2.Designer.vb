@@ -32,13 +32,15 @@ Partial Class Form2
         CORREO = New DataGridViewTextBoxColumn()
         Contraseña = New DataGridViewTextBoxColumn()
         Tipo = New DataGridViewTextBoxColumn()
-        Button2 = New Button()
-        Button4 = New Button()
-        Button3 = New Button()
-        TabPage2 = New TabPage()
-        TabPage1 = New TabPage()
+        btnAgregar = New Button()
+        btnEliminar = New Button()
+        btnActualizar = New Button()
+        Inventario = New TabPage()
+        Ventas = New TabPage()
+        Siniestros = New TabPage()
+        Servicios = New TabPage()
         Panel2 = New Panel()
-        Button1 = New Button()
+        btnCerrarSesion = New Button()
         lblBienvenido = New Label()
         ToolTip1 = New ToolTip(components)
         Panel1.SuspendLayout()
@@ -60,8 +62,10 @@ Partial Class Form2
         ' TabControl1
         ' 
         TabControl1.Controls.Add(Usuarios)
-        TabControl1.Controls.Add(TabPage2)
-        TabControl1.Controls.Add(TabPage1)
+        TabControl1.Controls.Add(Inventario)
+        TabControl1.Controls.Add(Ventas)
+        TabControl1.Controls.Add(Siniestros)
+        TabControl1.Controls.Add(Servicios)
         TabControl1.Font = New Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         TabControl1.ItemSize = New Size(150, 42)
         TabControl1.Location = New Point(3, 84)
@@ -73,9 +77,9 @@ Partial Class Form2
         ' Usuarios
         ' 
         Usuarios.Controls.Add(DataGridView1)
-        Usuarios.Controls.Add(Button2)
-        Usuarios.Controls.Add(Button4)
-        Usuarios.Controls.Add(Button3)
+        Usuarios.Controls.Add(btnAgregar)
+        Usuarios.Controls.Add(btnEliminar)
+        Usuarios.Controls.Add(btnActualizar)
         Usuarios.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Usuarios.Location = New Point(4, 46)
         Usuarios.Name = "Usuarios"
@@ -123,75 +127,95 @@ Partial Class Form2
         Tipo.Name = "Tipo"
         Tipo.Width = 300
         ' 
-        ' Button2
+        ' btnAgregar
         ' 
-        Button2.Font = New Font("Segoe UI", 10.2F)
-        Button2.Location = New Point(359, 582)
-        Button2.Name = "Button2"
-        Button2.Size = New Size(110, 29)
-        Button2.TabIndex = 2
-        Button2.Text = "Agregar"
-        Button2.UseVisualStyleBackColor = True
+        btnAgregar.Font = New Font("Segoe UI", 10.2F)
+        btnAgregar.Location = New Point(359, 582)
+        btnAgregar.Name = "btnAgregar"
+        btnAgregar.Size = New Size(110, 29)
+        btnAgregar.TabIndex = 2
+        btnAgregar.Text = "Agregar"
+        btnAgregar.UseVisualStyleBackColor = True
         ' 
-        ' Button4
+        ' btnEliminar
         ' 
-        Button4.Font = New Font("Segoe UI", 10.2F)
-        Button4.Location = New Point(869, 582)
-        Button4.Name = "Button4"
-        Button4.Size = New Size(110, 29)
-        Button4.TabIndex = 4
-        Button4.Text = "Eliminar"
-        Button4.UseVisualStyleBackColor = True
+        btnEliminar.Font = New Font("Segoe UI", 10.2F)
+        btnEliminar.Location = New Point(869, 582)
+        btnEliminar.Name = "btnEliminar"
+        btnEliminar.Size = New Size(110, 29)
+        btnEliminar.TabIndex = 4
+        btnEliminar.Text = "Eliminar"
+        btnEliminar.UseVisualStyleBackColor = True
         ' 
-        ' Button3
+        ' btnActualizar
         ' 
-        Button3.Font = New Font("Segoe UI", 10.2F)
-        Button3.Location = New Point(614, 582)
-        Button3.Name = "Button3"
-        Button3.Size = New Size(110, 29)
-        Button3.TabIndex = 3
-        Button3.Text = "Actualizar"
-        Button3.UseVisualStyleBackColor = True
+        btnActualizar.Font = New Font("Segoe UI", 10.2F)
+        btnActualizar.Location = New Point(614, 582)
+        btnActualizar.Name = "btnActualizar"
+        btnActualizar.Size = New Size(110, 29)
+        btnActualizar.TabIndex = 3
+        btnActualizar.Text = "Actualizar"
+        btnActualizar.UseVisualStyleBackColor = True
         ' 
-        ' TabPage2
+        ' Inventario
         ' 
-        TabPage2.Location = New Point(4, 46)
-        TabPage2.Name = "TabPage2"
-        TabPage2.Padding = New Padding(3)
-        TabPage2.Size = New Size(1352, 638)
-        TabPage2.TabIndex = 1
-        TabPage2.Text = "Inventario        "
-        TabPage2.UseVisualStyleBackColor = True
+        Inventario.Location = New Point(4, 46)
+        Inventario.Name = "Inventario"
+        Inventario.Padding = New Padding(3)
+        Inventario.Size = New Size(1352, 638)
+        Inventario.TabIndex = 1
+        Inventario.Text = "Inventario        "
+        Inventario.UseVisualStyleBackColor = True
         ' 
-        ' TabPage1
+        ' Ventas
         ' 
-        TabPage1.Location = New Point(4, 46)
-        TabPage1.Name = "TabPage1"
-        TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(1352, 638)
-        TabPage1.TabIndex = 2
-        TabPage1.Text = "Ventas     "
-        TabPage1.UseVisualStyleBackColor = True
+        Ventas.Location = New Point(4, 46)
+        Ventas.Name = "Ventas"
+        Ventas.Padding = New Padding(3)
+        Ventas.Size = New Size(1352, 638)
+        Ventas.TabIndex = 2
+        Ventas.Text = "Ventas     "
+        Ventas.UseVisualStyleBackColor = True
+        ' 
+        ' Siniestros
+        ' 
+        Siniestros.Location = New Point(4, 46)
+        Siniestros.Name = "Siniestros"
+        Siniestros.Padding = New Padding(3)
+        Siniestros.Size = New Size(1352, 638)
+        Siniestros.TabIndex = 3
+        Siniestros.Text = "Siniestros         "
+        Siniestros.UseVisualStyleBackColor = True
+        ' 
+        ' Servicios
+        ' 
+        Servicios.Location = New Point(4, 46)
+        Servicios.Name = "Servicios"
+        Servicios.Padding = New Padding(3)
+        Servicios.Size = New Size(1352, 638)
+        Servicios.TabIndex = 4
+        Servicios.Text = "Servicios         "
+        Servicios.UseVisualStyleBackColor = True
         ' 
         ' Panel2
         ' 
         Panel2.BackColor = Color.FromArgb(CByte(35), CByte(35), CByte(35))
-        Panel2.Controls.Add(Button1)
+        Panel2.Controls.Add(btnCerrarSesion)
         Panel2.Controls.Add(lblBienvenido)
         Panel2.Location = New Point(-2, 0)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1368, 48)
         Panel2.TabIndex = 0
         ' 
-        ' Button1
+        ' btnCerrarSesion
         ' 
-        Button1.BackgroundImage = My.Resources.Resources.cerrar_sesion
-        Button1.BackgroundImageLayout = ImageLayout.Center
-        Button1.Location = New Point(1313, 3)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(30, 33)
-        Button1.TabIndex = 1
-        Button1.UseVisualStyleBackColor = True
+        btnCerrarSesion.BackgroundImage = My.Resources.Resources.cerrar_sesion
+        btnCerrarSesion.BackgroundImageLayout = ImageLayout.Center
+        btnCerrarSesion.Location = New Point(1313, 3)
+        btnCerrarSesion.Name = "btnCerrarSesion"
+        btnCerrarSesion.Size = New Size(30, 33)
+        btnCerrarSesion.TabIndex = 1
+        btnCerrarSesion.UseVisualStyleBackColor = True
         ' 
         ' lblBienvenido
         ' 
@@ -230,18 +254,20 @@ Partial Class Form2
         Return ToString()
     End Function
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnCerrarSesion As Button
+    Friend WithEvents btnEliminar As Button
+    Friend WithEvents btnActualizar As Button
+    Friend WithEvents btnAgregar As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents Usuarios As TabPage
     Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents Inventario As TabPage
+    Friend WithEvents Ventas As TabPage
     Friend WithEvents RUT As DataGridViewTextBoxColumn
     Friend WithEvents CORREO As DataGridViewTextBoxColumn
     Friend WithEvents Contraseña As DataGridViewTextBoxColumn
     Friend WithEvents Tipo As DataGridViewTextBoxColumn
+    Friend WithEvents Siniestros As TabPage
+    Friend WithEvents Servicios As TabPage
 End Class

@@ -24,10 +24,15 @@
 
     ' Manejador de eventos para el clic en Button1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         ' Código para cerrar sesión
 
         Form1.Show()
         Me.Close()
+
     End Sub
 
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs)
+
+    End Sub
 End Class

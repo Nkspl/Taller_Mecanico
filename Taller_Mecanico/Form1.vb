@@ -18,7 +18,7 @@ Public Class Form1
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
         If ComboBox1.SelectedItem.ToString() = "English" Then
             ' Cambiar los textos al inglés
-            Label1.Text = "Welcome to Ulta Mechanics"
+            Label1.Text = "Welcome to Ultra Mechanics"
             Label2.Text = "Email"
             Label3.Text = "Password"
             btnIniciarSesion.Text = "Login"
@@ -26,7 +26,7 @@ Public Class Form1
             Label6.Text = "© Non-commercial product developed by Nikens Pierre and Joao Ureta 2024. All rights reserved."
         Else
             ' Cambiar los textos al español
-            Label1.Text = "Bienvenido a Ulta Mechanics"
+            Label1.Text = "Bienvenido a Ultra Mechanics"
             Label2.Text = "Correo"
             Label3.Text = "Contraseña"
             btnIniciarSesion.Text = "Iniciar Sesión"
@@ -71,13 +71,13 @@ Public Class Form1
                 ' Abrir el Form2 y pasar el nombre
                 Dim form2 As New Form2()
                 form2.lblBienvenido.Text = If(ComboBox1.SelectedItem.ToString() = "English", $"Welcome, {nombre}", $"Bienvenido, {nombre}")
-                form2.StartPosition = FormStartPosition.CenterScreen ' Asegura que aparezca centrado
+                form2.StartPosition = FormStartPosition.CenterScreen ' Asegurar que aparezca centrado
                 form2.ShowDialog() ' Usar ShowDialog para que sea modal
 
-                ' Ocultar el Form1 si quieres que desaparezca, de lo contrario, no lo ocultes.
+                ' Ocultar el Form1 
                 Me.Hide()
             Else
-                ' Si no se encontró ningún usuario, mostrar un mensaje de error
+                ' Si no se encontró ningún usuario, mostrar mensaje de error
                 Dim mensajeError As String
                 If ComboBox1.SelectedItem.ToString() = "English" Then
                     mensajeError = "User does not exist or password is incorrect."

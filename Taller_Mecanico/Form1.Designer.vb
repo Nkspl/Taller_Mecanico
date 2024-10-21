@@ -45,8 +45,9 @@ Partial Class Form1
         Panel1.BackColor = Color.FromArgb(CByte(35), CByte(35), CByte(35))
         Panel1.Controls.Add(Panel2)
         Panel1.Location = New Point(-1, -2)
+        Panel1.Margin = New Padding(3, 2, 3, 2)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1365, 780)
+        Panel1.Size = New Size(1194, 585)
         Panel1.TabIndex = 0
         ' 
         ' Panel2
@@ -62,17 +63,19 @@ Partial Class Form1
         Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(Label1)
-        Panel2.Location = New Point(305, 14)
+        Panel2.Location = New Point(267, 10)
+        Panel2.Margin = New Padding(3, 2, 3, 2)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(822, 594)
+        Panel2.Size = New Size(719, 446)
         Panel2.TabIndex = 0
         ' 
         ' PictureBox1
         ' 
         PictureBox1.Image = My.Resources.Resources.mx_icon
-        PictureBox1.Location = New Point(170, 205)
+        PictureBox1.Location = New Point(149, 154)
+        PictureBox1.Margin = New Padding(3, 2, 3, 2)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(168, 158)
+        PictureBox1.Size = New Size(147, 118)
         PictureBox1.TabIndex = 20
         PictureBox1.TabStop = False
         ' 
@@ -81,9 +84,9 @@ Partial Class Form1
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 7.20000029F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label6.ForeColor = SystemColors.AppWorkspace
-        Label6.Location = New Point(170, 561)
+        Label6.Location = New Point(149, 421)
         Label6.Name = "Label6"
-        Label6.Size = New Size(641, 17)
+        Label6.Size = New Size(471, 12)
         Label6.TabIndex = 19
         Label6.Text = "© Producto no comercial desarollado por Nikens Pierre y Joao Ureta 2024. Reservados todos los derechos."
         ' 
@@ -92,9 +95,9 @@ Partial Class Form1
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI Black", 16.2F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label5.ForeColor = Color.CornflowerBlue
-        Label5.Location = New Point(157, 523)
+        Label5.Location = New Point(137, 392)
         Label5.Name = "Label5"
-        Label5.Size = New Size(677, 38)
+        Label5.Size = New Size(508, 30)
         Label5.TabIndex = 18
         Label5.Text = "_______________________________________________________"
         ' 
@@ -103,32 +106,35 @@ Partial Class Form1
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label4.ForeColor = SystemColors.AppWorkspace
-        Label4.Location = New Point(477, 462)
+        Label4.Location = New Point(417, 346)
         Label4.Name = "Label4"
-        Label4.Size = New Size(143, 20)
+        Label4.Size = New Size(114, 15)
         Label4.TabIndex = 17
         Label4.Text = "Seleccionar idioma:"
         ' 
         ' txtContrasena
         ' 
-        txtContrasena.Location = New Point(477, 313)
+        txtContrasena.Location = New Point(417, 235)
+        txtContrasena.Margin = New Padding(3, 2, 3, 2)
         txtContrasena.Name = "txtContrasena"
-        txtContrasena.Size = New Size(321, 27)
+        txtContrasena.Size = New Size(281, 23)
         txtContrasena.TabIndex = 16
         ' 
         ' txtNombreUsuario
         ' 
-        txtNombreUsuario.Location = New Point(477, 224)
+        txtNombreUsuario.Location = New Point(417, 168)
+        txtNombreUsuario.Margin = New Padding(3, 2, 3, 2)
         txtNombreUsuario.Name = "txtNombreUsuario"
-        txtNombreUsuario.Size = New Size(321, 27)
+        txtNombreUsuario.Size = New Size(281, 23)
         txtNombreUsuario.TabIndex = 15
         ' 
         ' ComboBox1
         ' 
         ComboBox1.FormattingEnabled = True
-        ComboBox1.Location = New Point(626, 454)
+        ComboBox1.Location = New Point(548, 340)
+        ComboBox1.Margin = New Padding(3, 2, 3, 2)
         ComboBox1.Name = "ComboBox1"
-        ComboBox1.Size = New Size(172, 28)
+        ComboBox1.Size = New Size(151, 23)
         ComboBox1.TabIndex = 14
         ' 
         ' btnIniciarSesion
@@ -136,9 +142,10 @@ Partial Class Form1
         btnIniciarSesion.BackColor = Color.FromArgb(CByte(3), CByte(77), CByte(136))
         btnIniciarSesion.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnIniciarSesion.ForeColor = Color.White
-        btnIniciarSesion.Location = New Point(674, 387)
+        btnIniciarSesion.Location = New Point(590, 290)
+        btnIniciarSesion.Margin = New Padding(3, 2, 3, 2)
         btnIniciarSesion.Name = "btnIniciarSesion"
-        btnIniciarSesion.Size = New Size(124, 29)
+        btnIniciarSesion.Size = New Size(108, 22)
         btnIniciarSesion.TabIndex = 13
         btnIniciarSesion.Text = "Iniciar sesión"
         btnIniciarSesion.UseVisualStyleBackColor = False
@@ -148,9 +155,9 @@ Partial Class Form1
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = SystemColors.AppWorkspace
-        Label3.Location = New Point(477, 290)
+        Label3.Location = New Point(417, 218)
         Label3.Name = "Label3"
-        Label3.Size = New Size(92, 20)
+        Label3.Size = New Size(72, 15)
         Label3.TabIndex = 12
         Label3.Text = "Contraseña:"
         ' 
@@ -159,9 +166,9 @@ Partial Class Form1
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = SystemColors.AppWorkspace
-        Label2.Location = New Point(477, 196)
+        Label2.Location = New Point(417, 147)
         Label2.Name = "Label2"
-        Label2.Size = New Size(60, 20)
+        Label2.Size = New Size(48, 15)
         Label2.TabIndex = 11
         Label2.Text = "Correo:"
         ' 
@@ -170,18 +177,19 @@ Partial Class Form1
         Label1.AutoSize = True
         Label1.Font = New Font("Arial Black", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = SystemColors.ButtonHighlight
-        Label1.Location = New Point(157, 104)
+        Label1.Location = New Point(137, 78)
         Label1.Name = "Label1"
-        Label1.Size = New Size(654, 56)
+        Label1.Size = New Size(520, 45)
         Label1.TabIndex = 10
         Label1.Text = "Bienvenido a Ultra Mecanica"
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1362, 773)
+        ClientSize = New Size(1192, 562)
         Controls.Add(Panel1)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "Form1"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Form1"

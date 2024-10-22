@@ -12,6 +12,9 @@ Public Class Form1
 
         ' Establecer "Español" como el idioma predeterminado
         ComboBox1.SelectedItem = "Español"
+
+        ' Enmascarar la entrada de la contraseña
+        txtContrasena.UseSystemPasswordChar = True
     End Sub
 
     ' Evento SelectedIndexChanged del ComboBox1
@@ -38,58 +41,88 @@ Public Class Form1
     ' Evento Click del Botón Iniciar Sesión
     Private Sub btnIniciarSesion_Click(sender As Object, e As EventArgs) Handles btnIniciarSesion.Click
         Try
-            ' Inicializar la conexión dentro del Try
-            conexion = New MySqlConnection("Server=localhost;Database=taller;User ID=root;Password=Hola.,123;SslMode=None;AllowPublicKeyRetrieval=True;")
-
             ' Obtener los valores ingresados por el usuario
             Dim nombreUsuario As String = txtNombreUsuario.Text
             Dim contrasena As String = txtContrasena.Text
 
-            ' Comando SQL para verificar los datos del usuario
-            Dim query As String = "SELECT Correo FROM usuarios WHERE Correo = @NombreUsuario AND Contraseña = @Contrasena"
-            Dim comando As New MySqlCommand(query, conexion)
+            ' Verificar si los campos están vacíos
+            If String.IsNullOrWhiteSpace(nombreUsuario) Or String.IsNullOrWhiteSpace(contrasena) Then
+                Dim mensajeError As String
+                If ComboBox1.SelectedItem.ToString() = "English" Then
+                    mensajeError = "Please fill in all fields."
+                Else
+                    mensajeError = "Por favor complete todos los campos."
+                End If
 
-            ' Añadir los parámetros
-            comando.Parameters.AddWithValue("@NombreUsuario", nombreUsuario)
-            comando.Parameters.AddWithValue("@Contrasena", contrasena)
+                Dim tituloError As String = If(ComboBox1.SelectedItem.ToString() = "English", "Error", "Error")
+                MessageBox.Show(mensajeError, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return ' Salir del evento
+            End If
+
+            ' Inicializar la conexión
+            conexion = New MySqlConnection("Server=localhost;Database=taller;User ID=root;Password=Hola.,123;SslMode=None;AllowPublicKeyRetrieval=True;")
+
+            ' Comando SQL para verificar si el usuario existe
+            Dim userExistsQuery As String = "SELECT Contraseña FROM usuarios WHERE Correo = @NombreUsuario"
+            Dim userExistsCommand As New MySqlCommand(userExistsQuery, conexion)
+            userExistsCommand.Parameters.AddWithValue("@NombreUsuario", nombreUsuario)
 
             ' Abrir la conexión
             conexion.Open()
 
             ' Ejecutar el comando
-            Dim lector As MySqlDataReader = comando.ExecuteReader()
+            Dim reader As MySqlDataReader = userExistsCommand.ExecuteReader()
 
-            ' Verificar si el lector tiene filas (es decir, si se encontró un usuario)
-            If lector.HasRows Then
-                lector.Read() ' Leer los datos
-                Dim nombre As String = lector("Correo").ToString()
+            If reader.HasRows Then
+                ' El usuario existe
+                reader.Read()
+                Dim storedPassword As String = reader("Contraseña").ToString()
+                reader.Close()
 
-                ' Cerrar el lector y la conexión
-                lector.Close()
-                conexion.Close()
+                ' Verificar si la contraseña es correcta
+                If storedPassword = contrasena Then
+                    ' Contraseña correcta, iniciar sesión
+                    ' Obtener el correo del usuario
+                    Dim nombre As String = nombreUsuario
 
-                ' Abrir el Form2 y pasar el nombre
-                Dim form2 As New Form2()
-                form2.lblBienvenido.Text = If(ComboBox1.SelectedItem.ToString() = "English", $"Welcome, {nombre}", $"Bienvenido, {nombre}")
-                form2.StartPosition = FormStartPosition.CenterScreen ' Asegurar que aparezca centrado
-                form2.ShowDialog() ' Usar ShowDialog para que sea modal
+                    ' Cerrar la conexión
+                    conexion.Close()
 
-                ' Ocultar el Form1 
-                Me.Hide()
+                    ' Abrir el Form2 y pasar el nombre
+                    Dim form2 As New Form2()
+                    form2.lblBienvenido.Text = If(ComboBox1.SelectedItem.ToString() = "English", $"Welcome, {nombre}", $"Bienvenido, {nombre}")
+                    form2.StartPosition = FormStartPosition.CenterScreen ' Asegurar que aparezca centrado
+                    form2.ShowDialog() ' Usar ShowDialog para que sea modal
+
+                    ' Ocultar el Form1 
+                    Me.Hide()
+                Else
+                    ' Contraseña incorrecta
+                    Dim mensajeError As String
+                    If ComboBox1.SelectedItem.ToString() = "English" Then
+                        mensajeError = "Incorrect password."
+                    Else
+                        mensajeError = "Contraseña incorrecta."
+                    End If
+                    Dim tituloError As String = If(ComboBox1.SelectedItem.ToString() = "English", "Login Error", "Error de inicio de sesión")
+                    MessageBox.Show(mensajeError, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+                    ' Cerrar la conexión
+                    conexion.Close()
+                End If
             Else
-                ' Si no se encontró ningún usuario, mostrar mensaje de error
+                ' El usuario no existe
                 Dim mensajeError As String
                 If ComboBox1.SelectedItem.ToString() = "English" Then
-                    mensajeError = "User does not exist or password is incorrect."
+                    mensajeError = "User does not exist."
                 Else
-                    mensajeError = "Usuario inexistente o contraseña incorrecta"
+                    mensajeError = "Usuario inexistente."
                 End If
-
                 Dim tituloError As String = If(ComboBox1.SelectedItem.ToString() = "English", "Login Error", "Error de inicio de sesión")
                 MessageBox.Show(mensajeError, tituloError, MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-                ' Cerrar el lector y la conexión
-                lector.Close()
+                ' Cerrar la conexión
+                reader.Close()
                 conexion.Close()
             End If
         Catch ex As MySqlException
@@ -102,5 +135,8 @@ Public Class Form1
             End If
         End Try
     End Sub
-End Class
 
+    Private Sub Label5_Click_1(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+End Class
